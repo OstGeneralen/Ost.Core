@@ -22,7 +22,7 @@ namespace Ost.Core.Tests.Services
             void OnUnregistered() => OnUnregisteredInvoked = true;
         }
 
-        [TestMethod("Register_service_allows_access_to_registered_service")]
+        [TestMethod("RegisterService")]
         public void RegisterServiceTest()
         {
             var locator = new ServiceLocator();
@@ -32,7 +32,7 @@ namespace Ost.Core.Tests.Services
             Assert.AreSame(service, gottenService);
         }
 
-        [TestMethod("Emplace_service_allows_access_to_service")]
+        [TestMethod("EmplaceService")]
         public void EmplaceServiceTest()
         {
             var locator = new ServiceLocator();
@@ -40,7 +40,7 @@ namespace Ost.Core.Tests.Services
             Assert.IsNotNull(locator.TryGetService<TestService_Basic>());
         }
 
-        [TestMethod("Locator_invokes_callbacks_if_the_exist_on_registered_service")]
+        [TestMethod("RegisterServiceCallbacksTest")]
         public void RegisterCallbackInvokeTest()
         {
             var locator = new ServiceLocator();
@@ -55,7 +55,7 @@ namespace Ost.Core.Tests.Services
             Assert.IsTrue(service.OnUnregisteredInvoked);
         }
 
-        [TestMethod("Locator_invokes_callbacks_if_the_exist_on_emplaced_service")]
+        [TestMethod("EmplaceServiceCallbacksTest")]
         public void EmplaceCallbackInvokeTest()
         {
             var locator = new ServiceLocator();
